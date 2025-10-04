@@ -73,7 +73,7 @@ const Login = () => {
       e.stopPropagation();
     };
     if (UserName !="" && Password !="") {
-      navigate('/home');
+      navigate('/home1');
     }
     setValidated(true);
   }
