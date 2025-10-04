@@ -56,13 +56,10 @@ const Login = () => {
   const [Password, setPassword] = useState('');
   const [validated, setValidated] = useState(false);
   // const [showPassword, setShowPassword] = React.useState(false);
-
   // const handleClickShowPassword = () => setShowPassword((show) => !show);
-
   // const handleMouseDownPassword = (event) => {
   //   event.preventDefault();
   // };
-
   // const handleMouseUpPassword = (event) => {
   //   event.preventDefault();
   // };
@@ -73,7 +70,7 @@ const Login = () => {
       e.stopPropagation();
     };
     if (UserName !="" && Password !="") {
-      navigate('/home1');
+      navigate('/home');
     }
     setValidated(true);
   }
