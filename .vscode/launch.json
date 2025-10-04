@@ -10,7 +10,8 @@
     {
       "name": "Vite Dev Server",
       "type": "node-terminal",
-      "command": "npm run dev"
+      "command": "npm run dev",
+      "request": "launch",
     },
     {
       "name": "Vite + Chrome Debug",
