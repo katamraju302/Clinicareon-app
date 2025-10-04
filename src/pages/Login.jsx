@@ -1,16 +1,33 @@
-// src/pages/Login.jsx
-import Button from '../components/Button'
 import React, { useState, useEffect } from 'react';
 import login_icon from '../assets/LoginIcons/login_icon.png'
 import Form from 'react-bootstrap/Form';
-import InputGroup from 'react-bootstrap/InputGroup';
+import Button from '@mui/material/Button';
+import TextField from '@mui/material/TextField';
+import IconButton from '@mui/material/IconButton';
+import OutlinedInput from '@mui/material/OutlinedInput';
+import InputLabel from '@mui/material/InputLabel';
+import InputAdornment from '@mui/material/InputAdornment';
+import FormControl from '@mui/material/FormControl';
+import Visibility from '@mui/icons-material/Visibility';
+import VisibilityOff from '@mui/icons-material/VisibilityOff';
+import Box from '@mui/material/Box';
+import Input from '@mui/material/Input';
+import Container from '@mui/material/Container';
 import './Login.css'
+import { Password } from '@mui/icons-material';
+import { Grid } from '@mui/material';
+import Stack from '@mui/material/Stack';
+import { useNavigate } from 'react-router-dom';
+
+
+
 const Login = () => {
-    const [windowSize, setWindowSize] = useState({
+  const navigate = useNavigate();
+  const [windowSize, setWindowSize] = useState({
     width: window.innerWidth,
     height: window.innerHeight,
   });
-  
+
   useEffect(() => {
     const handleResize = () => {
       setWindowSize({
@@ -31,66 +48,65 @@ const Login = () => {
     border: '1px solid #ddd',
     borderRadius: '8px',
     textAlign: 'center',
-    width: (windowSize.width-900),
-    maxWidth:'1200px',
-    minWidth:'300px',
+    width: (windowSize.width - 900),
+    maxWidth: '1200px',
+    minWidth: '300px',
   };
   const [UserName, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [Password, setPassword] = useState('');
   const [validated, setValidated] = useState(false);
+  // const [showPassword, setShowPassword] = React.useState(false);
 
+  // const handleClickShowPassword = () => setShowPassword((show) => !show);
+
+  // const handleMouseDownPassword = (event) => {
+  //   event.preventDefault();
+  // };
+
+  // const handleMouseUpPassword = (event) => {
+  //   event.preventDefault();
+  // };
   const handleSubmit = (e) => {
     const form = e.currentTarget;
     if (form.checkValidity() === false) {
       e.preventDefault();
       e.stopPropagation();
-  };
-}
-  setValidated(true);
+    };
+    if (UserName !="" && Password !="") {
+      navigate('/home');
+    }
+    setValidated(true);
+  }
+
   return (
-    <div style={containerStyle}>
-        <img src={login_icon} className="logo" alt="LoginIcon"></img>
+    <Container style={containerStyle} className='shadow'>
+      <img src={login_icon} className="logo" alt="LoginIcon"></img>
       <Form noValidate validated={validated} onSubmit={handleSubmit} style={styles.form}>
-        <div className='row'>
-            <div className='col-6 col-sm-3 col-md-3 col-xl-3 text-align-center'>
-                <label className='form-label-text'>User Name :</label>
-            </div>
-           <div className='col-6 col-sm-8 col-md-8 col-xl-8'>
-                {/* <input
-                  type="text"
-                  placeholder="User Name"
-                  value={UserName}
-                  onChange={(e) => setEmail(e.target.value)}
-                  className='form-control'
-                  required
-                /> */}
-                <Form.Control
-                    required
-                    type="text"
-                    placeholder="User Name"
-                    value={UserName}
-                    onChange={(e) => setEmail(e.target.value)}
-                />
-           </div>
+        <div className='row text-center'>
+          <TextField id="txtUserName"
+            label="User Name"
+            onChange={(e) => setEmail(e.target.value)}
+            variant="standard"
+            value={UserName}
+            size="small"
+            className='maxWidth-300'
+          />
         </div>
-        <div className='row'>
-            <div className='col-6 col-sm-3 col-md-3 col-xl-3 text-align-center'>
-                <label className='form-label-text'>Password :</label>
-            </div>
-            <div className='col-6 col-sm-8 col-md-8 col-xl-8'>
-                <input
-                  type="password"
-                  placeholder="Password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  className='form-control'
-                  required
-                />
-            </div>
+        <div className='row text-center'>
+          <TextField id="txtPassword"
+            label="Password"
+            onChange={(e) => setPassword(e.target.value)}
+            variant="standard"
+            value={Password}
+            size="small"
+            className='maxWidth-300'
+          />
         </div>
-        <Button label="Login" onClick={handleSubmit} />
+         <div className='row text-center'>
+        <Button variant="contained" className='maxWidth-400' onClick={handleSubmit}>Login</Button>
+        </div>
       </Form>
-    </div>
+    </Container>
   );
 };
 
