@@ -45,6 +45,7 @@ const Login = () => {
       e.preventDefault();
       e.stopPropagation();
   };
+}
   setValidated(true);
   return (
     <div style={containerStyle}>
@@ -120,5 +121,5 @@ const styles = {
     cursor: 'pointer',
   },
 };
-}
+
 export default Login;
